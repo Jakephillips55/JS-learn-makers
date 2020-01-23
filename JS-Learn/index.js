@@ -85,6 +85,7 @@ function greet(name, lastName) {
 greet('Jake', 'Phillips'); 
 greet('Jake'); 
 // passing a value for the parameter
+
 // functions are a set of statements that 
 // perform a task or calculates a value 
 
@@ -99,3 +100,40 @@ console.log(sqaure(2));
 // think of method 
 // log is a function aswell 
 // so we call log on console 
+
+// this 
+// this | references the object that is executing
+// the current function 
+// if the function is part of a object we call that function a method 
+// so if that function is a method in an object - this would reference 
+// that object itself. 
+// otherwise if that function is a regular function (which means its not part of an object)
+// this references the global object(which is the window object in browsers and node)
+const video = { 
+    title: 'a', 
+    play() { 
+        console.log(this);
+    }
+}; 
+
+video.play(); 
+// method -> obj 
+// function -> global (window, global)
+// so in this example because play is a method on the
+// video object - this references this object itself
+//  { title: 'a', 
+//     play() { 
+//       console.log(this);
+//     }
+// }; 
+// you can all other methods here you will still get object 
+// ie video.stop = function(){ console.log(this);};
+// video.stop(); 
+
+function Video(title){
+    this.title = title; 
+    console.log(this); 
+}
+const v = new Video('a'); 
+
+// using this in constructor functions will reference a new empty obj
